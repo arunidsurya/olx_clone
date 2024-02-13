@@ -7,7 +7,7 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { AuthContext ,FirebaseContext } from '../../store/FirebaseContext';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 import { auth } from '../../firebase/config';
 
@@ -15,12 +15,13 @@ function Header() {
 
   const {user} = useContext(AuthContext);
   const {firebase} = useContext(FirebaseContext);
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
     try {
       signOut(auth).then(()=>{
-        history.push('/login');
+        // history.push('/login');
+        navigate('/login')
       })
      
     } catch (error) {
@@ -55,10 +56,10 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>{user ? `Welcome ${user.displayName}` : 'Login'}</span>
+          <span onClick={()=>navigate('/login')}>{user ? `Welcome ${user.displayName}` : 'Login'}</span>
           <hr />
         </div>
-        {user && <span onClick={handleLogout}>Logout</span>}
+        {user && <span className='logoutbutton' onClick={handleLogout}>Logout</span>}
 
         <div className="sellMenu">
           <SellButton></SellButton>

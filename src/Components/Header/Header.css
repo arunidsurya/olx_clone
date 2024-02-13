@@ -105,6 +105,9 @@
   font-weight: bolder;
   margin-right: 5px;
 }
+.loginPage{
+  cursor: pointer;
+}
 
 .loginPage hr {
   margin: 0;
@@ -115,7 +118,9 @@
 .loginPage a{
   text-decoration: none;
 }
-
+.logoutbutton{
+  cursor: pointer;
+}
 .sellMenu {
   position: relative;
   cursor: pointer;

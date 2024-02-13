@@ -5,7 +5,8 @@ import {FirebaseContext,AuthContext} from '../../store/FirebaseContext'
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth,firestore } from '../../firebase/config';
 import { collection, doc, setDoc } from 'firebase/firestore';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
   const {firebase} = useContext(FirebaseContext);
@@ -15,7 +16,7 @@ const Create = () => {
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const date = new Date();
-  const history = useHistory()
+  const navigate =useNavigate()
 
   const handleSubmit = async () => {
     const storage = getStorage();
@@ -34,7 +35,8 @@ const Create = () => {
         createdAt:date.toDateString()
       })
 
-      history.push('/')
+      // history.push('/')
+        navigate('/')
 
     } catch (error) {
       console.error("Error uploading image: ", error);

@@ -6,14 +6,14 @@ import { FirebaseContext } from '../../store/FirebaseContext';
 import { auth, firestore } from '../../firebase/config';
 import { collection, getDoc, getDocs, query } from 'firebase/firestore';
 import { PostContext } from '../../store/PostContext';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useNavigate } from 'react-router-dom';
 
 function Posts() {
 
   const { firebase } = useContext(FirebaseContext);
   const [products, setProducts] = useState([]);
   const {setPostDetails} = useContext(PostContext);
-  const history = useHistory()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const myCollection = collection(firestore, "products");
@@ -48,7 +48,8 @@ function Posts() {
                   className="card"
                   onClick={()=>{
                     setPostDetails(product);
-                    history.push('/view')
+                    // history.push('/view')
+                    navigate("/view")
                   }}
                 >
                   <div className="favorite">

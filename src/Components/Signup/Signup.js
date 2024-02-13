@@ -1,19 +1,17 @@
 import React, { useState,useContext } from 'react';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-// import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useNavigate } from 'react-router-dom';
-
-
 import Logo from '../../olx-logo.png';
 import './Signup.css';
 import { FirebaseContext } from '../../store/FirebaseContext';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
+
 
 
 export default function Signup() {
-  const history = useHistory()
-  // const navigate = useNavigate()
+
+  const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -35,30 +33,11 @@ export default function Signup() {
         phone:phone
       });
       console.log('Document written with ID: ',userDocRef.id);
-      history.push("/login")
-      // navigate="/login"
+      navigate("/login")
 
     } catch (error) {
       console.error('Error signing up', error.message);
     }
-
-
-    // .then((result)=>{
-    //   result.user.updateProfile({displayName:username}).then(()=>{
-    //     const db = firestore;
-    //     setDoc(doc(collection(db,"users")),{
-    //       id:result.user.uid,
-    //       username:username,
-    //       phone:phone
-    //     }).then(()=>{
-    //         history.push("/login")
-    //     }).catch((error)=>{
-    //       console.log('Error redirecting to login',error);
-    //     })
-
-    //   })
-
-    // })
 
   }
 

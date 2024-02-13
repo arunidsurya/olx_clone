@@ -29,19 +29,6 @@ function View() {
 
   })
 
-  // useEffect(() => {
-  //   const { userId } = postDetails;
-  //   const getUsers = async () => {
-  //     if (!userId || !firebase) return; // Ensure userId and firebase are available
-  //     const q = query(collection(firebase.firestore(), 'users'), where('id', '==', userId));
-  //     const querySnapshot = await getDocs(q);
-  //     querySnapshot.forEach((doc) => {
-  //       console.log(doc.data());
-  //       setUserDetails(doc.data());
-  //     });
-  //   };
-  //   getUsers();
-  // }, [postDetails, firebase]); // Add firebase as a dependency
 
 
   return (
